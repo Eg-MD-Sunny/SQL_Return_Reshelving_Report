@@ -1,7 +1,17 @@
 --Return Re-Shelving Report
 
-select t.LastActionOn,w.ID WarehouseID, w.Name WarehouseName, e.badgeid badgeid,e.FullName EmployeeName, de.designationname,pv.id,pv.name,count(*) Quantity,
-dbo.tsn(FromState) FromState, dbo.tsn(ToState) ToState
+select  t.LastActionOn,
+        w.ID WarehouseID,
+        w.Name WarehouseName,
+        e.badgeid badgeid,
+        e.FullName EmployeeName, 
+        de.designationname,
+        pv.id,
+        pv.name,
+        count(*) Quantity,
+        dbo.tsn(FromState) FromState,
+        dbo.tsn(ToState) ToState
+        
 from thingevent te
 join thing t on t.id = te.thingid
 join thingtransaction tt on tt.id = te.thingtransactionid
